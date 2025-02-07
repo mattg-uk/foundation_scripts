@@ -24,10 +24,9 @@ take quite some time to download and compile them_
 This script will install an 'IDE' like environment: toolchains,
 alactritty terminal, neovim editor and Hyprland compositing window manager.
 
-`sudo development.sh`
-`git clone https://github.com/mattg-uk/foundation_scripts
-cd foundation_scripts
-sudo ./development.sh`
+`git clone https://github.com/mattg-uk/foundation_scripts`
+`cd foundation_scripts`
+`sudo ./development.sh`
 
 ## Running individual scripts
 
@@ -44,8 +43,8 @@ Runs sudo update and upgrade, and installs toolchains. Configures basic folders
 in /home and adds them to the .bashrc. It automates routine installation of
 C/C++, Rust, and python-venv: these are dependencies for the other scripts.
 
-`sudo ./basic_system.sh
-. .bashrc`
+`sudo ./basic_system.sh`
+`. .bashrc`
 
 ### Editor environment
 
@@ -55,10 +54,10 @@ This script installs Alacritty, Neovim, and configuration files.
 
 ### Install hyprland 
 
-Hyprland is installed so that login is possible from sddm to allow a tiling
-environment. There is a basic configuration - be careful of monitor settings.
+This script will install Hyprland - login is possible then possible from sddm.
+There is a basic configuration - but be careful of monitor settings.
 
-Hyprpanel is installed, along with SWWW. These extra tools allow for  
+Hyprpanel will be installed, along with SWWW. These extra tools allow for  
 bluetooth, volume, and networking control from the system tray, etc.
 
 `sudo ./install_hyprland.sh`
