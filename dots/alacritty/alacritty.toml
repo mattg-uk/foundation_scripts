@@ -1,0 +1,37 @@
+
+import = [
+  "~/.config/alacritty/boats.toml",
+]
+
+[window]
+decorations = "full"
+opacity = 0.85
+startup_mode = "Windowed"
+decorations_theme_variant = "Dark"
+class = { instance = "Alacritty", general = "Alacritty"}
+padding = { x = 5, y = 5 }
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+[bell]
+animation = "EaseOutExpo"
+duration = 50
+
+# Nested table access
+[font.normal]
+family = "Hack"
+style = "regular"
+
+[font.bold]
+family = "Hack"
+style = "bold"
+
+[font.italic]
+family = "Hack"
+style = "italic"

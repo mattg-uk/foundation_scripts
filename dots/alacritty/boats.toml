@@ -1,0 +1,42 @@
+
+
+# Default colors
+[colors.primary]
+background = '#100e10'
+foreground = '#dfcfc0'
+
+# Normal colors
+[colors.normal]
+black = '#0a0f14'
+
+# broken links, etc
+red = '#d26939'
+
+# executables
+green = '#6E8DB7'
+
+# block devices
+yellow = '#D6AD6C'
+
+# folders
+blue = '#426Ab1'
+
+# ????
+magenta = '#4e5165'
+
+# symlinks
+cyan = '#A19B9A'
+
+# files
+white = '#98d1ce'
+
+# Bright colors
+[colors.bright]
+black = '#405470'
+red = '#d26939'
+green = '#50f0d0'
+yellow = '#d0e040'
+blue = '#60b0c0'
+magenta = '#888ba5'
+cyan = '#40ffb0'
+white = '#d3ebe9'
