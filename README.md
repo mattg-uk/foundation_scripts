@@ -25,7 +25,9 @@ This script will install an 'IDE' like environment: toolchains,
 alactritty terminal, neovim editor and Hyprland compositing window manager.
 
 `git clone https://github.com/mattg-uk/foundation_scripts`
+
 `cd foundation_scripts`
+
 `sudo ./development.sh`
 
 ## Running individual scripts
@@ -44,6 +46,7 @@ in /home and adds them to the .bashrc. It automates routine installation of
 C/C++, Rust, and python-venv: these are dependencies for the other scripts.
 
 `sudo ./basic_system.sh`
+
 `. .bashrc`
 
 ### Editor environment
