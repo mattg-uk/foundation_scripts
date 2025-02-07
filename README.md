@@ -9,7 +9,9 @@ They will install:
   - basic development tools for C/C++, Rust and Python
   - quickly install neovim, alactritty and sane / IDE configs
   - install hyprland, and build / install hyprpanel and swww
-  - configure /etc files for nvidia and install the nvidia 560 driver 
+
+It will also be necessary to install graphics drivers, i.e. for nvidia,
+refer to the manafacturer documentation and hyprland website.
 
 ## Usage
 
@@ -68,15 +70,6 @@ bluetooth, volume, and networking control from the system tray, etc.
 _Note: Ubuntu / Kubuntu do not contain Hyprpanel in 24.10;
 if the dependencies of the sources for Hyprpanel and SWWW change substantially,
 then this from-source build may break._
-
-### Driver script
-
-The nvidia script copies default minimal scripts into /etc - if you have
-existing or alternative configuration for nvidia drivers, do not use this
-script. This script is recommended to provide basic configuration for 
-using Hyprland.
-
-`sudo ./nvidia.sh`
 
 ## Finishing configuration
 
