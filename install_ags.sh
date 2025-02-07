@@ -10,6 +10,7 @@ libjson-glib-1.0-0
 libjson-glib-1.0-common
 libjson-glib-dev
 libgjs-dev 
+libncurses-dev
 libpulse-dev
 network-manager-dev
 libgnome-bluetooth-3.0-dev
@@ -47,7 +48,7 @@ rm -rf $SCRIPT_DIR/appmenu-glib-translator-git
 su -c "git clone https://aur.archlinux.org/appmenu-glib-translator-git.git $SCRIPT_DIR/appmenu-glib-translator-git" $USER
 cd $SCRIPT_DIR/appmenu-glib-translator-git
 su -c 'makepkg -d' $USER
-pacman -U *.gz --assume-installed glib2 --no-confirm
+pacman -U *.gz --assume-installed glib2 --noconfirm
 
 # Pull source for astal-io, astal-gtk3, astal-gtk4; compile
 rm -rf $SCRIPT_DIR/astal
@@ -55,11 +56,11 @@ su -c "git clone https://github.com/aylur/astal.git $SCRIPT_DIR/astal" $USER
 
 # Meson build the Astal libraries
 meson_libs=(
-astal/lang/gjs
 astal/lib/apps
 astal/lib/astal/io
 astal/lib/astal/gtk3
 astal/lib/astal/gtk4
+astal/lang/gjs
 astal/lib/auth
 astal/lib/battery
 astal/lib/bluetooth
@@ -71,6 +72,7 @@ astal/lib/network
 astal/lib/notifd
 astal/lib/powerprofiles
 astal/lib/tray
+astal/lib/wireplumber
 )
 
 for pkg in ${meson_libs[@]}; do
@@ -86,10 +88,6 @@ rm -rf $SCRIPT_DIR/ags
 su -c "git clone https://github.com/aylur/ags.git $SCRIPT_DIR/ags" $USER
 
 cd $SCRIPT_DIR/ags
-
-if [[ ! -d $USER_HOME/.local/bin ]]; then
-    su -c 'mkdir -p $USER_HOME/.local/bin' $USER
-fi
 
 go install -ldflags "\
     -X 'main.gtk4LayerShell=$(pkg-config --variable=libdir gtk4-layer-shell-0)/libgtk4-layer-shell.so' \

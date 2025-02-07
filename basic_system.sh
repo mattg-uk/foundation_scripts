@@ -3,7 +3,7 @@
 . ./utils.sh
 
 apt update
-apt upgrade
+apt upgrade --assume-yes
 
 basic_deps=(
 build-essential
@@ -36,4 +36,18 @@ done
 
 su -c 'rustup default stable' $USER
 su -c 'rustup update' $USER
+
+# Make the folders, update the path and ensure its SOURCED
+if [[ ! -d $USER_HOME/.local/bin ]]; then
+    su -c "mkdir -p $USER_HOME/.local/bin" $USER
+fi
+
+if [[ ! -d $USER_HOME/.local/share/fonts ]] ; then
+    mkdir -p $USER_HOME/.local/share/fonts
+fi
+
+if ! grep local/bin $USER_HOME/.bashrc; then
+    echo "export PATH=$PATH:$USER_HOME/.local/bin" >> $USER_HOME/.bashrc
+    . $USER_HOME/.bashrc
+fi
 

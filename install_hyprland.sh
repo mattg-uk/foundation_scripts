@@ -53,7 +53,7 @@ done
 npm install -g sass
 npm install -g gtop
 
-if $(dpkg-query -l dart); then
+if dpkg-query -s dart; then
     # if installed or uninstalled: check / install 
     install_package dart
 else
@@ -64,6 +64,7 @@ else
             | sudo gpg  --dearmor -o /usr/share/keyrings/dart.gpg
         echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' \
             | sudo tee /etc/apt/sources.list.d/dart_stable.list
+        apt update
     else
         echo "dart_stable.list already configured."
     fi
@@ -101,11 +102,8 @@ cd /tmp/swww
 
 su -c 'cargo build --release' $USER
 
-if [[ ! -d $USER_HOME/.local/bin ]]; then
-    su -c 'mkdir -p $USER_HOME/.local/bin' $USER
-fi
-mv target/release/swww ~/.local/bin
-mv target/release/swww-daemon ~/.local/bin
+mv target/release/swww $USER_HOME/.local/bin
+mv target/release/swww-daemon $USER_HOME/.local/bin
 
 su -c "cp -r $SCRIPT_DIR/dots/hypr $USER_HOME/.config"
 su -c "cp -r $SCRIPT_DIR/dots/hyprpanel $USER_HOME/.config"

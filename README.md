@@ -1,48 +1,82 @@
-# Foundation Installation Scripts
+# Foundation Scripts
 
-Bringing up a convenient development system from scratch can be time-consuming.
+This project installs my personal system configuration on Kubuntu 24.10.
 
 These scripts are here to make convenient the establishment of a development
-system on Kubuntu 24.10.
+system on Kubuntu 24.10. They _might_ work on other Linux distros.
 
-They include:
-  - basic_system.sh : basic development tools for C/C++, Rust and Python
-  - editor_environment.sh : quickly install neovim, alactritty and configs
-  - install_hyperland.sh : installs hyprland, hyprpanel, and swww
-  - development.sh : installs all of the above
-
-  - nvidia.sh : installs nvidia 560 driver and modeset files (run separately)
+They will install:
+  - basic development tools for C/C++, Rust and Python
+  - quickly install neovim, alactritty and sane / IDE configs
+  - install hyprland, and build / install hyprpanel and swww
+  - configure /etc files for nvidia and install the nvidia 560 driver 
 
 ## Usage
 
-All the scripts require sudo privileges, and drop those privileges, when
-required, to perform steps as the SUDO_USER.
+All the scripts require sudo privileges. These scripts have been tested with
+Kubuntu 24.10, on a fresh 'from .iso' install. 
+
+_Please note: There are a *lot* of dependencies for Hyprpanel, and it will
+take quite some time to download and compile them_
+
+## Development Environment
+
+This script will install an 'IDE' like environment: toolchains,
+alactritty terminal, neovim editor and Hyprland compositing window manager.
+
+`sudo development.sh`
+`git clone https://github.com/mattg-uk/foundation_scripts
+cd foundation_scripts
+sudo ./development.sh`
+
+## Running individual scripts
+
+The scripts can also be run individually.
+
+  - `editor_environment.sh`
+  - `install_hyperland.sh`
+
+assume that `basic_system.sh` has already been run.
+
+### Basic system
+
+Runs sudo update and upgrade, and installs toolchains. Configures basic folders
+in /home and adds them to the .bashrc. It automates routine installation of
+C/C++, Rust, and python-venv: these are dependencies for the other scripts.
+
+`sudo ./basic_system.sh
+. .bashrc`
+
+### Editor environment
+
+This script installs Alacritty, Neovim, and configuration files.
+
+`sudo ./editor_environment.sh`
+
+### Install hyprland 
+
+Hyprland is installed so that login is possible from sddm to allow a tiling
+environment. There is a basic configuration - be careful of monitor settings.
+
+Hyprpanel is installed, along with SWWW. These extra tools allow for  
+bluetooth, volume, and networking control from the system tray, etc.
+
+`sudo ./install_hyprland.sh`
+
+_Note: Ubuntu / Kubuntu do not contain Hyprpanel in 24.10;
+if the dependencies of the sources for Hyprpanel and SWWW change substantially,
+then this from-source build may break._
 
 ### Driver script
 
 The nvidia script copies default minimal scripts into /etc - if you have
-exisiting or alternative configuration for nvidia drivers, do not use this
-script.
+existing or alternative configuration for nvidia drivers, do not use this
+script. This script is recommended to provide basic configuration for 
+using Hyprland.
 
-`sudo nvidia.sh`
+`sudo ./nvidia.sh`
 
-### Development Environment
-
-This script will install a full 'IDE' like environment including the toolchain
-and the neovim editor. 
-
-`sudo development.sh`
-
-#### Hyprpanel / SWWW
-
-Hyprland is installed so that login is possible from sddm to allow a tiling
-environment. 
-
-_Note: Ubuntu / Kubuntu do not contain Hyprpanel in 24.10;
-if the dependencies of the sources for Hyprpanel and SWWW change substantially,
-then the from-source builds may break._
-
-#### Finishing configuration
+## Finishing configuration
 
 Alacritty will receive a configuration, as will Neovim; but the LSP / DAP
 Linting plugins must be installed using Mason when 'nvim' is run.
@@ -52,7 +86,7 @@ Linting plugins must be installed using Mason when 'nvim' is run.
 The first time nvim is opened, packer will run to install plugins. This
 will trigger a large number of packages to be installed, particularly
 for treesitter. If the downloads do not all finish, close and re-open
-neovim.
+neovim - repeatedly. 
 
 Wallpaper can be installed in Hyprland using swww; I use wallpaper from
 KDE. The hyprpanel bar can be configured by clicking on the 'Arch' icon.
