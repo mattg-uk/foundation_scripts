@@ -10,8 +10,10 @@ They will install:
   - quickly install neovim, alactritty and sane / IDE configs
   - install hyprland, and build / install hyprpanel and swww
 
-It will also be necessary to install graphics drivers, i.e. for nvidia,
-refer to the manafacturer documentation and hyprland website.
+## Graphics drivers for Hyprland
+
+It is not possible to give driver installation instructions here. However,
+the installation process used for the test system is documented below.
 
 ## Usage
 
@@ -85,3 +87,17 @@ neovim - repeatedly.
 
 Wallpaper can be installed in Hyprland using swww; I use wallpaper from
 KDE. The hyprpanel bar can be configured by clicking on the 'Arch' icon.
+
+## Nvidia driver installation for the test system: information only
+
+The installation of Nvidia drivers using `sudo ubuntu-drivers install` caused 
+initramfs to break, so `nvidia-driver-560-open` had to be *removed*.
+
+`sudo apt update && sudo apt upgrade`
+
+`sudo apt remove nvidia-driver-560-open`
+
+`sudo apt install nvidia-driver-560`
+
+_The output of apt list | grep nvidia | grep installed > nvidia_components.txt
+is present in the repo for documentation purposes._
